@@ -12,7 +12,7 @@ print(Style.BRIGHT + Fore.CYAN + """
 `--'   `--'`----' `--'          `--`--'|  |-' `--'`--' 
                                        `--'            
 """)
-print(Fore.BLUE + "MSF-APK for android")
+print(Fore.BLUE + "MSF-APK for android/ios/windows")
 time.sleep(1)
 print(Fore.CYAN + "[+]make your payload")
 print(Style.BRIGHT + Fore.WHITE + "[+] NOTE! this is if you already have a connection with the phone and/or computer you want to reconnect to.")
