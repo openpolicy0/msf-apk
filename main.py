@@ -13,7 +13,7 @@ print(Style.BRIGHT + Fore.CYAN + """
 `--'   `--'`----' `--'          `--`--'|  |-' `--'`--' 
                                        `--'            
 """)
-for _ in tqdm(range(100),
+for _ in tqdm(range(200),
 
     desc = "loading Msf-apk...",
     ascii = False,ncols=100):
